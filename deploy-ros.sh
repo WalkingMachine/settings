@@ -12,9 +12,9 @@ sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C
 sudo apt update
 
 # Install ROS and dependencies
-sudo apt install -y ros-kinetic-desktop-full
+sudo apt install -y ros-melodic-desktop-full
 sudo apt install -y python-rosinstall python-rosinstall-generator python-wstool build-essential
-sudo apt install -y ros-kinetic-ros-control ros-kinetic-hardware-interface ros-kinetic-moveit ros-kinetic-navigation
+sudo apt install -y ros-melodic-ros-control ros-melodic-hardware-interface ros-melodic-moveit ros-melodic-navigation
 sudo apt install -y ffmpeg
 sudo apt install -y python-imaging python-imaging-tk
 python -m pip install --user --upgrade pip
