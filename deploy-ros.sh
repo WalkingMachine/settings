@@ -34,9 +34,11 @@ case $SHELL in
 esac
 
 mkdir ~/sara_ws/src/ -p
-cd ~/sara_ws/src
+cd ~/sara_ws/
+catkin_make
 
 # Get wm main repositories
+# cd ~/sara_ws/src
 # git clone git@github.com:WalkingMachine/sara_msgs.git
 # git clone git@github.com:WalkingMachine/sara_launch.git
 # git clone git@github.com:WalkingMachine/sara_behaviors.git
