@@ -25,7 +25,14 @@ sudo rosdep init
 rosdep update
 
 # Prepare workspace
-source /opt/ros/melodic/setup.bash
+case $SHELL in
+*/zsh)
+    source /opt/ros/melodic/setup.zsh
+    ;;
+*)
+    source /opt/ros/melodic/setup.bash
+esac
+
 mkdir ~/sara_ws/src/ -p
 cd ~/sara_ws/src
 
