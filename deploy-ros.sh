@@ -25,7 +25,7 @@ sudo rosdep init
 rosdep update
 
 # Prepare workspace
-source /opt/ros/kinetic/setup.bash
+source /opt/ros/melodic/setup.bash
 mkdir ~/sara_ws/src/ -p
 cd ~/sara_ws/src
 
@@ -55,12 +55,14 @@ source ~/sara_ws/src/sara_launch/sh_files/sararc.sh
 if !(grep --quiet "# FOR ROS" ~/.bashrc); then
     echo Deploy Source to .bashrc
     echo "# FOR ROS" >> ~/.bashrc
-    echo "source ~/sara_ws/src/sara_launch/sh_files/sararc.sh" >> ~/.bashrc
+    echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+    #TODO: Work Again with this: echo "source ~/sara_ws/src/sara_launch/sh_files/sararc.sh" >> ~/.bashrc
 fi
 
 # Write sources in zshrc
 if !(grep --quiet "# FOR ROS" ~/.zshrc); then
     echo Deploy Source to .zshrc
     echo "# FOR ROS" >> ~/.zshrc
-    echo "source ~/sara_ws/src/sara_launch/sh_files/sararc.sh" >> ~/.zshrc
+    echo "source /opt/ros/melodic/setup.zsh" >> ~/.zshrc
+    #TODO: Work Again with this: echo "source ~/sara_ws/src/sara_launch/sh_files/sararc.sh" >> ~/.zshrc
 fi
