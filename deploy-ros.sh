@@ -5,6 +5,9 @@
 # @author:        Lucas Maurice
 # @organisation:  Walking Machine
 # @date:          14/06/2018
+# modification : utilise https au lieu de ssh pour git clone  
+# @date:          22/01/2019
+
 
 # Prepare ROS installation
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
@@ -32,12 +35,21 @@ mkdir ~/sara_ws/src/ -p
 cd ~/sara_ws/src
 
 # Get wm main repositories
-git clone git@github.com:WalkingMachine/sara_msgs.git
-git clone git@github.com:WalkingMachine/sara_launch.git
-git clone git@github.com:WalkingMachine/sara_behaviors.git
-git clone git@github.com:WalkingMachine/wonderland.git
-git clone git@github.com:WalkingMachine/wm_object_detection.git
-git clone git@github.com:team-vigir/flexbe_behavior_engine.git
+git clone https://github.com/WalkingMachine/sara_msgs.git
+git clone https://github.com/WalkingMachine/sara_launch.git
+git clone https://github.com/WalkingMachine/sara_behaviors.git
+git clone https://github.com/WalkingMachine/wonderland.git
+git clone https://github.com/WalkingMachine/wm_object_detection.git
+git clone https://github.com/team-vigir/flexbe_behavior_engine.git
+
+# Décommenter pour utiliser ssh # TODO demander dans le prompt
+#git clone git@github.com:WalkingMachine/sara_msgs.git
+#git clone git@github.com:WalkingMachine/sara_launch.git
+#git clone git@github.com:WalkingMachine/sara_behaviors.git
+#git clone git@github.com:WalkingMachine/wonderland.git
+#git clone git@github.com:WalkingMachine/wm_object_detection.git
+#git clone git@github.com:team-vigir/flexbe_behavior_engine.git
+
 
 # Install Wonderland
 cd ~/sara_ws/src/wonderland
