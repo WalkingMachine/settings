@@ -1,0 +1,46 @@
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH
+
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME=robbyrussell
+
+plugins=(git gitfast github osx tmux tmuxinator ruby)
+
+# Locale
+ export LANGUAGE="en"
+ export LANG="C"
+ export LC_MESSAGES="C"
+
+# Editor
+export EDITOR=vim
+
+source $ZSH/oh-my-zsh.sh
+
+unsetopt correct_all
+
+# Git Aliases
+alias commit="git commit -S -m"
+alias ga='git add'
+alias gp='git push'
+alias gl='git log'
+alias gs='git status'
+alias gd='git diff'
+alias gm='git commit -m'
+alias gma='git commit -am'
+alias gb='git branch'
+alias gc='git checkout'
+alias gra='git remote add'
+alias grr='git remote rm'
+alias gpu='git pull'
+alias gcl='git clone'
+alias gta='git tag -a -m'
+alias gf='git reflog'
+alias gh='git hist'
+
+# Export Code executable
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# User configuration
