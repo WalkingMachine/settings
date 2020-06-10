@@ -5,18 +5,18 @@ BLUE='\033[1;36m'
 NC='\033[0m' # No Color
 
 # Git User
-if $HELP
-then
-    echo "This help Will Be implemented shortly."
-    echo "For now, start nagging Raphael for it! :p"
-    exit 0
-else
+#if $HELP
+#then
+    #echo "This help Will Be implemented shortly."
+    #echo "For now, start nagging Raphael for it! :p"
+    #exit 0
+#else
 	#ASK FOR YOUR GITHUB CREDENTIALS
 	echo "Write your name:"
 	read GIT_USER
 	echo "Write your github email:"
 	read email
-fi
+#fi
     
 # Packages to install
 PACKAGES=(
@@ -115,6 +115,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
         ssh-keygen -t rsa -b 4096 -C $GIT_EMAIL
         eval "$(ssh-agent -s)"
         ssh-add ~/.ssh/id_rsa
+	ssh-keygen -t ed25519 -C $GIT_EMAIL
     fi
 
     shopt -s expand_aliases
@@ -181,14 +182,14 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
         eval "$(ssh-agent -s)"
         ssh-add -K ~/.ssh/id_rsa
     fi
-else
+else #End of MacOs part
         echo "${YELLOW}Error:${NC} OS is not supported."
         exit 1
 fi
 
 # Installing Python Apps
-echo "${GREEN}Deployment:${NC} Installing Python Apps"
-pip install ${PYTHON_PACKAGES[@]}
+#echo "${GREEN}Deployment:${NC} Installing Python Apps"
+#pip install ${PYTHON_PACKAGES[@]}
 
 # Installing Docker
 echo "${GREEN}Deployment:${NC} Installing Docker"
@@ -253,6 +254,7 @@ git config --global user.email $GIT_EMAIL
 echo "${GREEN}Deployment:${NC} Configure ZSH"
 if [ ! -d ~/.oh-my-zsh ]; then
     git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+    ~/.oh-my-zsh
     sudo chsh -s /bin/zsh $(whoami)
 fi
 
