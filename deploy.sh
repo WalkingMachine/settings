@@ -5,18 +5,11 @@ BLUE='\033[1;36m'
 NC='\033[0m' # No Color
 
 # Git User
-if $HELP
-then
-    echo "This help Will Be implemented shortly."
-    echo "For now, start nagging Raphael for it! :p"
-    exit 0
-else
 	#ASK FOR YOUR GITHUB CREDENTIALS
 	echo "Write your name:"
 	read GIT_USER
 	echo "Write your github email:"
-	read email
-fi
+	read GIT_EMAIL
     
 # Packages to install
 PACKAGES=(
@@ -27,7 +20,7 @@ PACKAGES=(
     ffmpeg
     gettext
     gifsicle
-    git
+    #git
     graphviz
     guake
     htop
@@ -57,28 +50,6 @@ PACKAGES=(
 )
 
 # Packages to install
-PACKAGES_MACOS_ONLY=(
-    mas
-    ssh-copy-id
-    terminal-notifier
-    the_silver_searcher
-    boot2docker
-    libjpeg
-)
-
-CASKS_PACKAGES=(
-    iterm2
-    caffeine
-    docker
-    transmission
-    1password
-    visual-studio-code
-    spotify
-    dockey
-    postman
-    tunnelblick
-)
-
 PYTHON_PACKAGES=(
     virtualenv
     virtualenvwrapper
@@ -105,6 +76,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
     sudo apt-get -f install -y -qqq
     sudo apt upgrade -y -qqq
 
+    #Install git
+    sudo apt install git -y 
+
     # Divers tools
     echo -e "${GREEN}Deployment:${NC} Installing Divers Tools"
     sudo apt install ${PACKAGES[@]} -y -qqq
@@ -119,73 +93,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
     shopt -s expand_aliases
     alias echo="echo -e"
-
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    echo "${GREEN}Begin:${NC} Run deployment as Mac OS system."
-
-    # Prepare
-    if test ! $(which brew); then
-        echo "${GREEN}Deployment:${NC} Installing Brew."
-        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    fi
-
-    # Updating Brew Packages
-    echo "${GREEN}Deployment:${NC} Updating Brew packages."
-    brew update
-    
-    # Installing MacOS Command Line Tools
-    echo -e "${GREEN}Deployment:${NC} Installing MacOS Command Line Tools"
-    xcode-select --install
-
-    # Accept licences
-    echo -e "${GREEN}Deployment:${NC} Accept licences"
-    sudo xcodebuild -license
-
-    # Installing GNU core utilities (those that come with OS X are outdated)
-    echo -e "${GREEN}Deployment:${NC} Installing GNU core utilities"
-    brew install coreutils
-    brew install gnu-sed
-    brew install gnu-tar
-    brew install gnu-indent
-    brew install gnu-which
-
-    # Divers tools
-    echo "${GREEN}Deployment:${NC} Installing Divers Tools"
-    brew install ${PACKAGES[@]}
-
-    # Cleaning up
-    echo "${GREEN}Deployment:${NC} Cleaning Brew"
-    brew cleanup
-
-    # Installing Cask
-    echo "${GREEN}Deployment:${NC} Installing Cask"
-    brew install caskroom/cask
-
-    # Installing Cask Apps
-    echo "${GREEN}Deployment:${NC} Installing Cask Apps"
-    brew cask install --force --require-sha ${CASKS_PACKAGES[@]}
-
-    mas install 1176895641 # Spark
-    mas install 441258766  # Magnet
-    mas install 1295203466 # Microsoft RDP
-    mas install 494803304  # Wifi Explorer
-    mas install 1191449274 # Tooth Fairy
-    mas install 411643860  # Daisy Disk
-    mas install 803453959  # Slack
-    mas install 425424353  # The Unarchiver
-
-    #NEXT ARE FOR SSH LOGIN CONFIGURATION ON GITHUB
-    if [ ! -f ~/.ssh/id_rsa ]; then
-        echo "${GREEN}Deployment:${NC} Create SSH Key for Git"
-        ssh-keygen -t rsa -b 4096 -C $GIT_EMAIL
-        eval "$(ssh-agent -s)"
-        ssh-add -K ~/.ssh/id_rsa
-    fi
-else
-        echo "${YELLOW}Error:${NC} OS is not supported."
-        exit 1
 fi
-
 # Installing Python Apps
 echo "${GREEN}Deployment:${NC} Installing Python Apps"
 pip install ${PYTHON_PACKAGES[@]}
@@ -260,4 +168,4 @@ fi
 echo "${GREEN}Deployment:${NC} Installing wallpapers"
 cp -fr ./wallpapers/* ~/Pictures/
 
-exec zsh
+#exec zsh
