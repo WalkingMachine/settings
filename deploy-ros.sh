@@ -25,7 +25,7 @@ rosdep update
 
 # Sara install first installation
 # TODO: Make sure that sara_install is installed in ~/
-git clone git@github.com:WalkingMachine/sara_install.git -b config/simulation_kinetic -- ~
+git clone git@github.com:WalkingMachine/sara_install.git -b config/simulation_kinetic -- ~/
 
 source ~/sara_install/script/setup.sh
 
