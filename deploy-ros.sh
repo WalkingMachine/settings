@@ -14,7 +14,7 @@ source ~/.bashrc
 
 #Add to zshrc
 echo "source /opt/ros/kinetic/setup.zsh" >> ~/.zshrc
-source ~/.zshrc
+# source ~/.zshrc
 
 sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
 
@@ -30,7 +30,10 @@ git clone git@github.com:WalkingMachine/sara_install.git -b config/simulation_ki
 source ~/sara_install/script/setup.sh
 
 # TODO: If this doesn't exist as an alias replace it by the alias definition in ~/sara_install/script/setup.sh
-INSTALL_SARA
+# INSTALL_SARA
+source ~/sara_install/script/install.sh
 
-source ~/sara_install/script/setup.sh
+echo "source ~/sara_install/script/setup.sh" >> ~/.bashrc
+echo "source ~/sara_install/script/setup.sh" >> ~/.zshrc
 
+source ~/.bashrc
