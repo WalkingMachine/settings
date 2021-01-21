@@ -122,17 +122,17 @@ sudo snap install slack # --classic
 echo -e "${GREEN}Deployment:${NC} Install Discord"
 sudo snap install discord # --classic
 
-if $INSTALL_AUTO
-then
+#if $INSTALL_AUTO
+#then
     # AUTO DEPLOYMENT - INSTALL
-    echo -e "${GREEN}Deployment:${NC} Installation of contents in ./installers."
-    for f in `ls ./installers/*.sh `
-    do
-        if [ ! -d ${f} ]; then
-            echo -e "${RED}Installation:${NC} $(echo $f | cut --delimiter='/' --fields=3 | cut --delimiter='.' --fields=1)"
-            ${f}
-        fi
-    done
+    #echo -e "${GREEN}Deployment:${NC} Installation of contents in ./installers."
+    #for f in `ls ./installers/*.sh `
+    #do
+        #if [ ! -d ${f} ]; then
+            #echo -e "${RED}Installation:${NC} $(echo $f | cut --delimiter='/' --fields=3 | cut --delimiter='.' --fields=1)"
+            #${f}
+        #fi
+    #done
     # # AUTO DEPLOYMENT - CONFIG
     # echo -e "${GREEN}Deployment:${NC} Installation of dotfiles in ./dotfiles"
     # for f in `ls ./dotfiles`
@@ -145,7 +145,7 @@ then
     #         cp ./dotfiles/${f} ~/.${f}
     #     fi
     # done
-fi
+#fi
 
 	#MAKE SURE EVERY PACKAGE AS ITS DEPENDENCIES
 sudo apt-get -f install	
