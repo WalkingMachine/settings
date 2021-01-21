@@ -116,7 +116,8 @@ done
 
 # Slack
 echo -e "${GREEN}Deployment:${NC} Install Slack"
-sudo snap install slack # --classic
+# TODO use flatpack if snap doesn't do the job (if slack is only in --classic in some more time)
+sudo snap install slack --classic
 
 #Discord
 echo -e "${GREEN}Deployment:${NC} Install Discord"
